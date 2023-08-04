@@ -1,0 +1,55 @@
+name: jobactions/tag
+inputs:
+  prerelease:
+    description: version '-prerelease.num' part
+    required: false
+    default: ''
+  buildmeta:
+    description: version '+buildmeta.text' part
+    required: false
+    default: ''
+outputs:
+  version:
+    description: updated tag/version
+    value: ${{ steps.update-git-tag.outputs.value }}
+runs:
+  using: composite
+  steps:
+  - uses: kagekirin/gha-utils/.github/actions/install-prerequisites@main
+  - uses: kagekirin/gha-utils/.github/actions/install-version-tools@main
+  - id: update-package-tag
+    shell: bash
+    run: |-
+      npm version patch --no-git-tag-version
+      prerelease="${{ inputs.prerelease }}"
+      buildmeta="${{ inputs.buildmeta }}"
+      tag="$(npm version patch --no-git-tag-version | rg -o '(\d+\.)*\d+')"
+
+      if [[ -n ${prerelease} ]]; then
+        tag="${tag}-${prerelease}"
+      fi
+
+      if [[ -n ${buildmeta} ]]; then
+        tag="${tag}+${buildmeta}"
+      fi
+      echo "tag='${tag}'" >> $GITHUB_OUTPUT
+  - id: update-git-tag
+    shell: bash
+    run: |-
+      git config --local user.name "CI Bot [on behalf of Chris Helmich]"
+      git config --local user.email kagekirin+gha@gmail.com
+      git --no-pager status
+      git --no-pager tag -l --sort=-v:refname | head -n 1
+
+      version=${{ steps.update-package-tag.outputs.tag }}
+      echo "Version: ${version}"
+      npm version ${version} --no-git-tag-version --allow-same-version
+      fdfind "csproj$" -x csproj-version set --version ${version} --xpath '//PropertyGroup/Version' {}
+
+      git add package.json
+      fdfind "csproj$" -x git add {}
+      git commit -m "build: update version to ${version}"
+      git tag -f v${version}
+
+      git --no-pager tag -l --sort=-v:refname | head -n 1
+      echo "value=${version}" >> $GITHUB_OUTPUT
