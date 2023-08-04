@@ -1,0 +1,46 @@
+name: Unity.Mathematics.NuGet/build-ci
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+    types: [closed]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+        framework: [netstandard2.1, net6.0, net7.0]
+    steps:
+    - uses: kagekirin/gha-utils/.github/actions/git-checkout-tags@main
+    - uses: ./.github/jobactions/build
+      with:
+        configuration: ${{ matrix.configuration }}
+        framework: ${{ matrix.framework }}
+
+  tag:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: kagekirin/gha-utils/.github/actions/git-checkout-tags@main
+      with:
+        ssh-key: "${{secrets.DEPLOY_KEY}}"
+    - id: create-tag
+      uses: ./.github/jobactions/tag
+    - uses: kagekirin/gha-utils/.github/actions/git-push-tag@main
+      with:
+        remote: origin
+        branch: main
+
+  test-nuget:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: kagekirin/gha-utils/.github/actions/git-checkout-tags@main
+    - uses: ./.github/jobactions/nuget-prepare-publish
+      with:
+        name: github-nuget
+        token: ${{ secrets.GH_NUGET_TOKEN }}
