@@ -1,0 +1,14 @@
+name: nuget publish
+inputs:
+  registry:
+    required: true
+  token:
+    required: true
+runs:
+  using: composite
+  steps:
+  - name: nuget push to ${{ inputs.registry }}
+    shell: bash
+    run: |-
+      fdfind --no-ignore nupkg$
+      fdfind --no-ignore nupkg$ -x dotnet nuget push {} --api-key ${{ inputs.token }}  --source "${{ inputs.registry }}"
