@@ -1,0 +1,21 @@
+name: nuget pack
+inputs:
+  configuration:
+    required: false
+    default: Release
+  framework:
+    required: true
+runs:
+  using: composite
+  steps:
+  - uses: ./.github/actions/build
+    with:
+      configuration: "${{ inputs.configuration }}"
+      framework: "${{ inputs.framework }}"
+  - name: Run nuget pack with ${{ inputs.framework }}
+    shell: bash
+    run: |-
+      for a in $(fdfind "csproj$"); do
+        dotnet pack -c ${{ inputs.configuration }} -p:TargetFramework=${framework} ${a}
+      done
+      fdfind --no-ignore nupkg$
