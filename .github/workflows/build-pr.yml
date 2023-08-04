@@ -1,0 +1,47 @@
+name: Unity.Mathematics.NuGet/build-pr
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  push:
+    branches-ignore:
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+        framework: [netstandard2.1, net6.0, net7.0]
+    steps:
+    - uses: kagekirin/gha-utils/.github/actions/git-checkout-tags@main
+    - uses: ./.github/jobactions/build
+      with:
+        configuration: ${{ matrix.configuration }}
+        framework: ${{ matrix.framework }}
+
+  test-tag:
+    runs-on: ubuntu-latest
+    needs: build
+    strategy:
+      matrix:
+        prerelease: ['', '0', 'nuget']
+        buildmeta: ['', 'test']
+    steps:
+    - uses: kagekirin/gha-utils/.github/actions/git-checkout-tags@main
+    - id: create-tag
+      uses: ./.github/jobactions/tag
+      with:
+        prerelease: ${{ matrix.prerelease }}
+        buildmeta: ${{ matrix.buildmeta }}
+
+  test-nuget:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: kagekirin/gha-utils/.github/actions/git-checkout-tags@main
+    - uses: ./.github/jobactions/nuget-prepare-publish
+      with:
+        name: github-nuget
+        token: ${{ secrets.GH_NUGET_TOKEN }}
