@@ -1,0 +1,37 @@
+{
+    "name": "com.kagekirin.unity.mathematics.serializable",
+    "version": "0.0.0-0",
+    "displayName": "Unity.Mathematics.Serializable",
+    "description": "JSON and FlatBuffer Serialization for Unity.Mathematics",
+    "unity": "2021.1",
+    "files": [
+        "*.meta",
+        "*.md",
+        "Unity.Mathematics.Serializable/bin/Release/netstandard2.1/*.dll",
+        "Unity.Mathematics.Serializable/bin/Release/netstandard2.1/*.pdb",
+        "Unity.Mathematics.Serializable/bin/Release/netstandard2.1/*.meta"
+    ],
+    "dependencies": {},
+    "keywords": [
+        "csharp",
+        "mathematics",
+        "linear algebra",
+        "serialization",
+        "flatbuffers",
+        "flatsharp",
+        "json"
+    ],
+    "author": {
+        "name": "Chris Helmich",
+        "email": "kagekirin@gmail.com",
+        "url": "https://github.com/kagekirin"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kagekirin/unity.mathematics.serializable.git",
+        "directory": "unity.mathematics.serializable"
+    },
+    "publishConfig": {
+        "registry": "https://npm.github.com/@kagekirin"
+    }
+}
