@@ -1,0 +1,43 @@
+name: jobactions/nuget-prepare-publish
+inputs:
+  name:
+    required: true
+  registry:
+    required: false
+    default: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+  username:
+    required: false
+    default: ${{ github.repository_owner }}
+  token:
+    required: true
+runs:
+  using: composite
+  steps:
+  - uses: kagekirin/gha-utils/.github/actions/install-prerequisites@main
+  - uses: kagekirin/gha-dotnet/.github/actions/nuget-add-registry@main
+    with:
+      name: ${{ inputs.name }}
+      registry: ${{ inputs.registry }}
+      username: ${{ inputs.username }}
+      token: ${{ inputs.token }}
+  - uses: ./.github/jobactions/build
+    with:
+      framework: netstandard2.1
+      configuration: Release
+  - uses: ./.github/actions/nuget-pack
+    with:
+      framework: netstandard2.1
+  - uses: ./.github/jobactions/build
+    with:
+      framework: net6.0
+      configuration: Release
+  - uses: ./.github/actions/nuget-pack
+    with:
+      framework: net6.0
+  - uses: ./.github/jobactions/build
+    with:
+      framework: net7.0
+      configuration: Release
+  - uses: ./.github/actions/nuget-pack
+    with:
+      framework: net7.0
