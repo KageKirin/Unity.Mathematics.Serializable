@@ -13,6 +13,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <FlatSharpSchema Include="Schemas/Unity.Mathematics.fbs"/>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FlatSharp.Compiler" Version="7.2.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>

@@ -1,0 +1,457 @@
+// Flatbuffer schema for generic math types (Linear Algebra)
+
+namespace Unity.Mathematics.Serializable;
+
+attribute "fs_valueStruct";
+attribute "fs_unsafeExternal";
+attribute "fs_nonVirtual";
+
+///-----------------------------------------------------------------------------
+/// float types
+
+/// 2D vector of floats
+struct float2(fs_valueStruct, native_inline, native_type: "float2", fs_unsafeExternal: "Unity.Mathematics.float2", fs_nonVirtual) {
+	x: float(native_default: "0");
+	y: float(native_default: "0");
+}
+
+/// 3D vector of floats
+struct float3(fs_valueStruct, native_inline, native_type: "float3", fs_unsafeExternal: "Unity.Mathematics.float3", fs_nonVirtual) {
+	x: float(native_default: "0");
+	y: float(native_default: "0");
+	z: float(native_default: "0");
+}
+
+/// 4D vector of floats (homogenous coordinates)
+struct float4(fs_valueStruct, native_inline, native_type: "float4", fs_unsafeExternal: "Unity.Mathematics.float4", fs_nonVirtual) {
+	x: float(native_default: "0");
+	y: float(native_default: "0");
+	z: float(native_default: "0");
+	w: float(native_default: "0");
+}
+
+/// 4D hypercomplex of floats
+struct quaternion(fs_valueStruct, native_inline, native_type: "quaternion", fs_unsafeExternal: "Unity.Mathematics.quaternion", fs_nonVirtual) {
+	x: float(native_default: "0");
+	y: float(native_default: "0");
+	z: float(native_default: "0");
+	w: float(native_default: "0");
+}
+
+/// 2x2 matrix of floats
+struct float2x2(fs_valueStruct, native_inline, native_type: "float2x2", fs_unsafeExternal: "Unity.Mathematics.float2x2", fs_nonVirtual) {
+	c0: float2(native_default: "{1,0}");
+	c1: float2(native_default: "{0,1}");
+}
+
+/// 2x3 matrix of floats
+struct float2x3(fs_valueStruct, native_inline, native_type: "float2x3", fs_unsafeExternal: "Unity.Mathematics.float2x3", fs_nonVirtual) {
+	c0: float2(native_default: "{1,0}");
+	c1: float2(native_default: "{0,1}");
+	c2: float2(native_default: "{0,0}");
+}
+
+/// 2x4 matrix of floats
+struct float2x4(fs_valueStruct, native_inline, native_type: "float2x4", fs_unsafeExternal: "Unity.Mathematics.float2x4", fs_nonVirtual) {
+	c0: float2(native_default: "{1,0}");
+	c1: float2(native_default: "{0,1}");
+	c2: float2(native_default: "{0,0}");
+	c3: float2(native_default: "{0,0}");
+}
+
+/// 3x2 matrix of floats
+struct float3x2(fs_valueStruct, native_inline, native_type: "float3x2", fs_unsafeExternal: "Unity.Mathematics.float3x2", fs_nonVirtual) {
+	c0: float3(native_default: "{1,0,0}");
+	c1: float3(native_default: "{0,1,0}");
+
+}
+
+/// 3x3 matrix of floats
+struct float3x3(fs_valueStruct, native_inline, native_type: "float3x3", fs_unsafeExternal: "Unity.Mathematics.float3x3", fs_nonVirtual) {
+	c0: float3(native_default: "{1,0,0}");
+	c1: float3(native_default: "{0,1,0}");
+	c2: float3(native_default: "{0,0,1}");
+}
+
+/// 3x4 matrix of floats
+struct float3x4(fs_valueStruct, native_inline, native_type: "float3x4", fs_unsafeExternal: "Unity.Mathematics.float3x4", fs_nonVirtual) {
+	c0: float3(native_default: "{1,0,0}");
+	c1: float3(native_default: "{0,1,0}");
+	c2: float3(native_default: "{0,0,1}");
+	c3: float3(native_default: "{0,0,0}");
+}
+
+/// 4x2 matrix of floats
+struct float4x2(fs_valueStruct, native_inline, native_type: "float4x2", fs_unsafeExternal: "Unity.Mathematics.float4x2", fs_nonVirtual) {
+	c0: float4(native_default: "{1,0,0,0}");
+	c1: float4(native_default: "{0,1,0,0}");
+}
+
+/// 4x3 matrix of floats
+struct float4x3(fs_valueStruct, native_inline, native_type: "float4x3", fs_unsafeExternal: "Unity.Mathematics.float4x3", fs_nonVirtual) {
+	c0: float4(native_default: "{1,0,0,0}");
+	c1: float4(native_default: "{0,1,0,0}");
+	c2: float4(native_default: "{0,0,1,0}");
+}
+
+/// 4x4 matrix of floats
+struct float4x4(fs_valueStruct, native_inline, native_type: "float4x4", fs_unsafeExternal: "Unity.Mathematics.float4x4", fs_nonVirtual) {
+	c0: float4(native_default: "{1,0,0,0}");
+	c1: float4(native_default: "{0,1,0,0}");
+	c2: float4(native_default: "{0,0,1,0}");
+	c3: float4(native_default: "{0,0,0,1}");
+}
+
+///-----------------------------------------------------------------------------
+///-----------------------------------------------------------------------------
+/// int types
+
+/// 2D vector of ints
+struct int2(fs_valueStruct, native_inline, native_type: "int2", fs_unsafeExternal: "Unity.Mathematics.int2", fs_nonVirtual) {
+	x: int(native_default: "0");
+	y: int(native_default: "0");
+}
+
+/// 3D vector of ints
+struct int3(fs_valueStruct, native_inline, native_type: "int3", fs_unsafeExternal: "Unity.Mathematics.int3", fs_nonVirtual) {
+	x: int(native_default: "0");
+	y: int(native_default: "0");
+	z: int(native_default: "0");
+}
+
+/// 4D vector of ints (homogenous coordinates)
+struct int4(fs_valueStruct, native_inline, native_type: "int4", fs_unsafeExternal: "Unity.Mathematics.int4", fs_nonVirtual) {
+	x: int(native_default: "0");
+	y: int(native_default: "0");
+	z: int(native_default: "0");
+	w: int(native_default: "0");
+}
+
+/// 2x2 matrix of ints
+struct int2x2(fs_valueStruct, native_inline, native_type: "int2x2", fs_unsafeExternal: "Unity.Mathematics.int2x2", fs_nonVirtual) {
+	c0: int2(native_default: "1,0");
+	c1: int2(native_default: "0,1");
+}
+
+/// 2x3 matrix of ints
+struct int2x3(fs_valueStruct, native_inline, native_type: "int2x3", fs_unsafeExternal: "Unity.Mathematics.int2x3", fs_nonVirtual) {
+	c0: int2(native_default: "1,0");
+	c1: int2(native_default: "0,1");
+	c2: int2(native_default: "0,0");
+}
+
+/// 2x4 matrix of ints
+struct int2x4(fs_valueStruct, native_inline, native_type: "int2x4", fs_unsafeExternal: "Unity.Mathematics.int2x4", fs_nonVirtual) {
+	c0: int2(native_default: "1,0");
+	c1: int2(native_default: "0,1");
+	c2: int2(native_default: "0,0");
+	c3: int2(native_default: "0,0");
+}
+
+/// 3x2 matrix of ints
+struct int3x2(fs_valueStruct, native_inline, native_type: "int3x2", fs_unsafeExternal: "Unity.Mathematics.int3x2", fs_nonVirtual) {
+	c0: int3(native_default: "1,0,0");
+	c1: int3(native_default: "0,1,0");
+}
+
+/// 3x3 matrix of ints
+struct int3x3(fs_valueStruct, native_inline, native_type: "int3x3", fs_unsafeExternal: "Unity.Mathematics.int3x3", fs_nonVirtual) {
+	c0: int3(native_default: "1,0,0");
+	c1: int3(native_default: "0,1,0");
+	c2: int3(native_default: "0,0,1");
+}
+
+/// 3x4 matrix of ints
+struct int3x4(fs_valueStruct, native_inline, native_type: "int3x4", fs_unsafeExternal: "Unity.Mathematics.int3x4", fs_nonVirtual) {
+	c0: int3(native_default: "1,0,0");
+	c1: int3(native_default: "0,1,0");
+	c2: int3(native_default: "0,0,1");
+	c3: int3(native_default: "0,0,0");
+}
+
+/// 4x2 matrix of ints
+struct int4x2(fs_valueStruct, native_inline, native_type: "int4x2", fs_unsafeExternal: "Unity.Mathematics.int4x2", fs_nonVirtual) {
+	c0: int4(native_default: "1,0,0,0");
+	c1: int4(native_default: "0,1,0,0");
+}
+
+/// 4x3 matrix of ints
+struct int4x3(fs_valueStruct, native_inline, native_type: "int4x3", fs_unsafeExternal: "Unity.Mathematics.int4x3", fs_nonVirtual) {
+	c0: int4(native_default: "1,0,0,0");
+	c1: int4(native_default: "0,1,0,0");
+	c2: int4(native_default: "0,0,1,0");
+}
+
+/// 4x4 matrix of ints
+struct int4x4(fs_valueStruct, native_inline, native_type: "int4x4", fs_unsafeExternal: "Unity.Mathematics.int4x4", fs_nonVirtual) {
+	c0: int4(native_default: "1,0,0,0");
+	c1: int4(native_default: "0,1,0,0");
+	c2: int4(native_default: "0,0,1,0");
+	c3: int4(native_default: "0,0,0,1");
+}
+
+///-----------------------------------------------------------------------------
+///-----------------------------------------------------------------------------
+/// uint types
+
+/// 2D vector of uints
+struct uint2(fs_valueStruct, native_inline, native_type: "uint2", fs_unsafeExternal: "Unity.Mathematics.uint2", fs_nonVirtual) {
+	x: uint(native_default: "0");
+	y: uint(native_default: "0");
+}
+
+/// 3D vector of uints
+struct uint3(fs_valueStruct, native_inline, native_type: "uint3", fs_unsafeExternal: "Unity.Mathematics.uint3", fs_nonVirtual) {
+	x: uint(native_default: "0");
+	y: uint(native_default: "0");
+	z: uint(native_default: "0");
+}
+
+/// 4D vector of uints (homogenous coordinates)
+struct uint4(fs_valueStruct, native_inline, native_type: "uint4", fs_unsafeExternal: "Unity.Mathematics.uint4", fs_nonVirtual) {
+	x: uint(native_default: "0");
+	y: uint(native_default: "0");
+	z: uint(native_default: "0");
+	w: uint(native_default: "0");
+}
+
+/// 2x2 matrix of uints
+struct uint2x2(fs_valueStruct, native_inline, native_type: "uint2x2", fs_unsafeExternal: "Unity.Mathematics.uint2x2", fs_nonVirtual) {
+	c0: uint2(native_default: "1,0");
+	c1: uint2(native_default: "0,1");
+}
+
+/// 2x3 matrix of uints
+struct uint2x3(fs_valueStruct, native_inline, native_type: "uint2x3", fs_unsafeExternal: "Unity.Mathematics.uint2x3", fs_nonVirtual) {
+	c0: uint2(native_default: "1,0");
+	c1: uint2(native_default: "0,1");
+	c2: uint2(native_default: "0,0");
+}
+
+/// 2x4 matrix of uints
+struct uint2x4(fs_valueStruct, native_inline, native_type: "uint2x4", fs_unsafeExternal: "Unity.Mathematics.uint2x4", fs_nonVirtual) {
+	c0: uint2(native_default: "1,0");
+	c1: uint2(native_default: "0,1");
+	c2: uint2(native_default: "0,0");
+	c3: uint2(native_default: "0,0");
+}
+
+/// 3x2 matrix of uints
+struct uint3x2(fs_valueStruct, native_inline, native_type: "uint3x2", fs_unsafeExternal: "Unity.Mathematics.uint3x2", fs_nonVirtual) {
+	c0: uint3(native_default: "1,0,0");
+	c1: uint3(native_default: "0,1,0");
+}
+
+/// 3x3 matrix of uints
+struct uint3x3(fs_valueStruct, native_inline, native_type: "uint3x3", fs_unsafeExternal: "Unity.Mathematics.uint3x3", fs_nonVirtual) {
+	c0: uint3(native_default: "1,0,0");
+	c1: uint3(native_default: "0,1,0");
+	c2: uint3(native_default: "0,0,1");
+}
+
+/// 3x4 matrix of uints
+struct uint3x4(fs_valueStruct, native_inline, native_type: "uint3x4", fs_unsafeExternal: "Unity.Mathematics.uint3x4", fs_nonVirtual) {
+	c0: uint3(native_default: "1,0,0");
+	c1: uint3(native_default: "0,1,0");
+	c2: uint3(native_default: "0,0,1");
+	c3: uint3(native_default: "0,0,0");
+}
+
+/// 4x2 matrix of uints
+struct uint4x2(fs_valueStruct, native_inline, native_type: "uint4x2", fs_unsafeExternal: "Unity.Mathematics.uint4x2", fs_nonVirtual) {
+	c0: uint4(native_default: "1,0,0,0");
+	c1: uint4(native_default: "0,1,0,0");
+}
+
+/// 4x3 matrix of uints
+struct uint4x3(fs_valueStruct, native_inline, native_type: "uint4x3", fs_unsafeExternal: "Unity.Mathematics.uint4x3", fs_nonVirtual) {
+	c0: uint4(native_default: "1,0,0,0");
+	c1: uint4(native_default: "0,1,0,0");
+	c2: uint4(native_default: "0,0,1,0");
+}
+
+/// 4x4 matrix of uints
+struct uint4x4(fs_valueStruct, native_inline, native_type: "uint4x4", fs_unsafeExternal: "Unity.Mathematics.uint4x4", fs_nonVirtual) {
+	c0: uint4(native_default: "1,0,0,0");
+	c1: uint4(native_default: "0,1,0,0");
+	c2: uint4(native_default: "0,0,1,0");
+	c3: uint4(native_default: "0,0,0,1");
+}
+
+///-----------------------------------------------------------------------------
+///-----------------------------------------------------------------------------
+/// boolean types
+
+/// 2D vector of bools
+struct bool2(fs_valueStruct, native_inline, native_type: "bool2", fs_unsafeExternal: "Unity.Mathematics.bool2", fs_nonVirtual) {
+	x: bool(native_default: "false");
+	y: bool(native_default: "false");
+}
+
+/// 3D vector of bools
+struct bool3(fs_valueStruct, native_inline, native_type: "bool3", fs_unsafeExternal: "Unity.Mathematics.bool3", fs_nonVirtual) {
+	x: bool(native_default: "false");
+	y: bool(native_default: "false");
+	z: bool(native_default: "false");
+}
+
+/// 4D vector of bools (homogenous coordinates)
+struct bool4(fs_valueStruct, native_inline, native_type: "bool4", fs_unsafeExternal: "Unity.Mathematics.bool4", fs_nonVirtual) {
+	x: bool(native_default: "false");
+	y: bool(native_default: "false");
+	z: bool(native_default: "false");
+	w: bool(native_default: "false");
+}
+
+/// 2x2 matrix of bools
+struct bool2x2(fs_valueStruct, native_inline, native_type: "bool2x2", fs_unsafeExternal: "Unity.Mathematics.bool2x2", fs_nonVirtual) {
+	c0: bool2(native_default: "true,false");
+	c1: bool2(native_default: "fale,true");
+}
+
+/// 2x3 matrix of bools
+struct bool2x3(fs_valueStruct, native_inline, native_type: "bool2x3", fs_unsafeExternal: "Unity.Mathematics.bool2x3", fs_nonVirtual) {
+	c0: bool2(native_default: "true,false");
+	c1: bool2(native_default: "fale,true");
+	c2: bool2(native_default: "fale,false");
+}
+
+/// 2x4 matrix of bools
+struct bool2x4(fs_valueStruct, native_inline, native_type: "bool2x4", fs_unsafeExternal: "Unity.Mathematics.bool2x4", fs_nonVirtual) {
+	c0: bool2(native_default: "true,false");
+	c1: bool2(native_default: "fale,true");
+	c2: bool2(native_default: "fale,false");
+	c3: bool2(native_default: "fale,false");
+}
+
+/// 3x2 matrix of bools
+struct bool3x2(fs_valueStruct, native_inline, native_type: "bool3x2", fs_unsafeExternal: "Unity.Mathematics.bool3x2", fs_nonVirtual) {
+	c0: bool3(native_default: "true,false,false");
+	c1: bool3(native_default: "fale,true,false");
+}
+
+/// 3x3 matrix of bools
+struct bool3x3(fs_valueStruct, native_inline, native_type: "bool3x3", fs_unsafeExternal: "Unity.Mathematics.bool3x3", fs_nonVirtual) {
+	c0: bool3(native_default: "true,false,false");
+	c1: bool3(native_default: "fale,true,false");
+	c2: bool3(native_default: "fale,false,true");
+}
+
+/// 3x4 matrix of bools
+struct bool3x4(fs_valueStruct, native_inline, native_type: "bool3x4", fs_unsafeExternal: "Unity.Mathematics.bool3x4", fs_nonVirtual) {
+	c0: bool3(native_default: "true,false,false");
+	c1: bool3(native_default: "fale,true,false");
+	c2: bool3(native_default: "fale,false,true");
+	c3: bool3(native_default: "fale,false,true");
+}
+
+/// 4x2 matrix of bools
+struct bool4x2(fs_valueStruct, native_inline, native_type: "bool4x2", fs_unsafeExternal: "Unity.Mathematics.bool4x2", fs_nonVirtual) {
+	c0: bool4(native_default: "true,false,false,false");
+	c1: bool4(native_default: "fale,true,false,false");
+}
+
+/// 4x3 matrix of bools
+struct bool4x3(fs_valueStruct, native_inline, native_type: "bool4x3", fs_unsafeExternal: "Unity.Mathematics.bool4x3", fs_nonVirtual) {
+	c0: bool4(native_default: "true,false,false,false");
+	c1: bool4(native_default: "fale,true,false,false");
+	c2: bool4(native_default: "fale,false,true,false");
+}
+
+/// 4x4 matrix of bools
+struct bool4x4(fs_valueStruct, native_inline, native_type: "bool4x4", fs_unsafeExternal: "Unity.Mathematics.bool4x4", fs_nonVirtual) {
+	c0: bool4(native_default: "true,false,false,false");
+	c1: bool4(native_default: "fale,true,false,false");
+	c2: bool4(native_default: "fale,false,true,false");
+	c3: bool4(native_default: "fale,false,false,true");
+}
+
+///-----------------------------------------------------------------------------
+///-----------------------------------------------------------------------------
+/// double types
+
+/// 2D vector of doubles
+struct double2(fs_valueStruct, native_inline, native_type: "double2", fs_unsafeExternal: "Unity.Mathematics.double2", fs_nonVirtual) {
+	x: double(native_default: "0");
+	y: double(native_default: "0");
+}
+
+/// 3D vector of doubles
+struct double3(fs_valueStruct, native_inline, native_type: "double3", fs_unsafeExternal: "Unity.Mathematics.double3", fs_nonVirtual) {
+	x: double(native_default: "0");
+	y: double(native_default: "0");
+	z: double(native_default: "0");
+}
+
+/// 4D vector of doubles (homogenous coordinates)
+struct double4(fs_valueStruct, native_inline, native_type: "double4", fs_unsafeExternal: "Unity.Mathematics.double4", fs_nonVirtual) {
+	x: double(native_default: "0");
+	y: double(native_default: "0");
+	z: double(native_default: "0");
+	w: double(native_default: "0");
+}
+
+/// 2x2 matrix of doubles
+struct double2x2(fs_valueStruct, native_inline, native_type: "double2x2", fs_unsafeExternal: "Unity.Mathematics.double2x2", fs_nonVirtual) {
+	c0: double2(native_default: "1,0");
+	c1: double2(native_default: "0,1");
+}
+
+/// 2x3 matrix of doubles
+struct double2x3(fs_valueStruct, native_inline, native_type: "double2x3", fs_unsafeExternal: "Unity.Mathematics.double2x3", fs_nonVirtual) {
+	c0: double2(native_default: "1,0");
+	c1: double2(native_default: "0,1");
+	c2: double2(native_default: "0,0");
+}
+
+/// 2x4 matrix of doubles
+struct double2x4(fs_valueStruct, native_inline, native_type: "double2x4", fs_unsafeExternal: "Unity.Mathematics.double2x4", fs_nonVirtual) {
+	c0: double2(native_default: "1,0");
+	c1: double2(native_default: "0,1");
+	c2: double2(native_default: "0,0");
+	c3: double2(native_default: "0,0");
+}
+
+/// 3x2 matrix of doubles
+struct double3x2(fs_valueStruct, native_inline, native_type: "double3x2", fs_unsafeExternal: "Unity.Mathematics.double3x2", fs_nonVirtual) {
+	c0: double3(native_default: "1,0,0");
+	c1: double3(native_default: "0,1,0");
+}
+
+/// 3x3 matrix of doubles
+struct double3x3(fs_valueStruct, native_inline, native_type: "double3x3", fs_unsafeExternal: "Unity.Mathematics.double3x3", fs_nonVirtual) {
+	c0: double3(native_default: "1,0,0");
+	c1: double3(native_default: "0,1,0");
+	c2: double3(native_default: "0,0,1");
+}
+
+/// 3x4 matrix of doubles
+struct double3x4(fs_valueStruct, native_inline, native_type: "double3x4", fs_unsafeExternal: "Unity.Mathematics.double3x4", fs_nonVirtual) {
+	c0: double3(native_default: "1,0,0");
+	c1: double3(native_default: "0,1,0");
+	c2: double3(native_default: "0,0,1");
+	c3: double3(native_default: "0,0,0");
+}
+
+/// 4x2 matrix of doubles
+struct double4x2(fs_valueStruct, native_inline, native_type: "double4x2", fs_unsafeExternal: "Unity.Mathematics.double4x2", fs_nonVirtual) {
+	c0: double4(native_default: "1,0,0,0");
+	c1: double4(native_default: "0,1,0,0");
+}
+
+/// 4x3 matrix of doubles
+struct double4x3(fs_valueStruct, native_inline, native_type: "double4x3", fs_unsafeExternal: "Unity.Mathematics.double4x3", fs_nonVirtual) {
+	c0: double4(native_default: "1,0,0,0");
+	c1: double4(native_default: "0,1,0,0");
+	c2: double4(native_default: "0,0,1,0");
+}
+
+/// 4x4 matrix of doubles
+struct double4x4(fs_valueStruct, native_inline, native_type: "double4x4", fs_unsafeExternal: "Unity.Mathematics.double4x4", fs_nonVirtual) {
+	c0: double4(native_default: "1,0,0,0");
+	c1: double4(native_default: "0,1,0,0");
+	c2: double4(native_default: "0,0,1,0");
+	c3: double4(native_default: "0,0,0,1");
+}
+
+///-----------------------------------------------------------------------------
