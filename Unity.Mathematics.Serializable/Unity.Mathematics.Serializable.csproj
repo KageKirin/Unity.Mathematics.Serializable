@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <FlatSharpSchema Include="Schemas/Unity.Mathematics.fbs"/>
+    <FlatSharpSchema Include="Schemas/Unity.Mathematics.Tables.fbs"/>
   </ItemGroup>
 
   <ItemGroup>
