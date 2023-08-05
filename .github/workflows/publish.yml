@@ -1,0 +1,34 @@
+name: Unity.Mathematics.NuGet/publish
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+        framework: [netstandard2.1, net6.0, net7.0]
+    steps:
+    - uses: kagekirin/gha-utils/.github/actions/git-checkout-tags@main
+    - uses: ./.github/jobactions/build
+      with:
+        configuration: ${{ matrix.configuration }}
+        framework: ${{ matrix.framework }}
+
+  nuget:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: kagekirin/gha-utils/.github/actions/git-checkout-tags@main
+    - uses: ./.github/jobactions/nuget-prepare-publish
+      with:
+        name: github-nuget
+        token: ${{ secrets.GH_NUGET_TOKEN }}
+    - uses: kagekirin/gha-dotnet/.github/actions/nuget-publish@main
+      with:
+        registry: github-nuget
+        token: ${{ secrets.GH_NUGET_TOKEN }}

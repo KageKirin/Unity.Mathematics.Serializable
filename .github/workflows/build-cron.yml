@@ -1,0 +1,77 @@
+name: Unity.Mathematics.NuGet/build-cron
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+        framework: [netstandard2.1, net6.0, net7.0]
+    steps:
+    - uses: kagekirin/gha-utils/.github/actions/git-checkout-tags@main
+    - uses: ./.github/jobactions/build
+      with:
+        configuration: ${{ matrix.configuration }}
+        framework: ${{ matrix.framework }}
+
+  test-nuget:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: kagekirin/gha-utils/.github/actions/git-checkout-tags@main
+    - uses: ./.github/jobactions/nuget-prepare-publish
+      with:
+        name: github-nuget
+        token: ${{ secrets.GH_NUGET_TOKEN }}
+
+
+  ### TODO: do not tag here, instead create a branch, update dependencies (dotnet )
+  update-dependencies:
+    runs-on: ubuntu-latest
+    needs: test-nuget
+    steps:
+    - uses: kagekirin/gha-utils/.github/actions/git-checkout-tags@main
+      with:
+        ssh-key: "${{secrets.DEPLOY_KEY}}"
+    - id: create-branch
+      shell: bash
+      run: |-
+        branch="build/update-dependencies-${{ github.run_id }}"
+        git checkout -b ${branch}
+        echo "branch='${branch}'" >> $GITHUB_OUTPUT
+    - id: update-dependencies
+      shell: bash
+      run: |-
+        for a in $(fdfind "csproj$"); do
+          for p in $(xq -x "//ItemGroup/PackageReference/@Include" ${a}); do
+            dotnet add ${p}
+            newVersion=$(xq -x "//ItemGroup/PackageReference[@Include='${p}']/@Version" ${a})
+            git add ${a}
+            git commit -m "build (${a}): update dependency ${p} to ${newVersion}" || echo "Nothing to commit for ${a} referencing ${p}"
+          done
+        done
+    - id: push-updates
+      shell: bash
+      run: git ps -u origin ${{ steps.create-branch.branch }}
+    - id: create-pr
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |-
+        gh pr create --fill
+        gh pr edit -t "build: update dependencies"
+    - id: auto-merge-pr
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |-
+        j="$(gh pr status --json title,number,headRefName,body)"
+        num=$(jq -r .currentBranch.number <<< $j)
+        title="$(jq -r .currentBranch.title <<< $j) ($(jq -r .currentBranch.headRefName <<< $j)) [#$num]"
+        body="$(jq -r .currentBranch.body <<< $j)nn$(jq -r .currentBranch.body <<< $j)"
+        gh pr merge --auto -d --squash --subject "$title" --body "$body"

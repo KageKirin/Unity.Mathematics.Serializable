@@ -1,0 +1,16 @@
+name: Build .NET
+inputs:
+  configuration:
+    required: false
+    default: Debug
+  framework:
+    required: true
+runs:
+  using: composite
+  steps:
+  - name: Build (${{ inputs.configuration }}) ${{ inputs.framework }}
+    shell: bash
+    run: |-
+      for a in $(fdfind "csproj$"); do
+        dotnet build -f ${{ inputs.framework }} -c ${{ inputs.configuration }} ${a}
+      done
