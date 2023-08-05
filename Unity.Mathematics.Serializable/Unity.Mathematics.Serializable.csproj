@@ -7,6 +7,11 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <FlatSharpNameNormalization>false</FlatSharpNameNormalization>
+    <FlatSharpNullable>true</FlatSharpNullable>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="FlatSharp.Compiler" Version="7.2.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
