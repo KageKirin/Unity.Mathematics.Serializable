@@ -20,7 +20,6 @@ runs:
   - id: update-package-tag
     shell: bash
     run: |-
-      npm version patch --no-git-tag-version
       prerelease="${{ inputs.prerelease }}"
       buildmeta="${{ inputs.buildmeta }}"
       tag="$(npm version patch --no-git-tag-version | rg -o '(\d+\.)*\d+')"
@@ -43,7 +42,7 @@ runs:
 
       version=${{ steps.update-package-tag.outputs.tag }}
       echo "Version: ${version}"
-      npm version ${version} --no-git-tag-version --allow-same-version
+      node-package-version set --version ${version} package.json
       fdfind "csproj$" -x csproj-version set --version ${version} --xpath '//PropertyGroup/Version' {}
 
       git add package.json
