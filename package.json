@@ -11,7 +11,10 @@
         "Unity.Mathematics.Serializable/bin/Release/netstandard2.1/*.pdb",
         "Unity.Mathematics.Serializable/bin/Release/netstandard2.1/*.meta"
     ],
-    "dependencies": {},
+    "dependencies": {
+        "com.unity.mathematics": "1.3.0",
+        "com.github.jamescourtney.flatsharp.runtime": "7.2.1"
+    },
     "keywords": [
         "csharp",
         "mathematics",
