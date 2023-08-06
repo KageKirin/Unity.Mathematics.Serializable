@@ -1,40 +1,40 @@
 {
-    "name": "com.kagekirin.unity.mathematics.serializable",
-    "version": "0.0.5",
-    "displayName": "Unity.Mathematics.Serializable",
-    "description": "JSON and FlatBuffer Serialization for Unity.Mathematics",
-    "unity": "2021.1",
-    "files": [
-        "*.meta",
-        "*.md",
-        "Unity.Mathematics.Serializable/bin/Release/netstandard2.1/*.dll",
-        "Unity.Mathematics.Serializable/bin/Release/netstandard2.1/*.pdb",
-        "Unity.Mathematics.Serializable/bin/Release/netstandard2.1/*.meta"
-    ],
-    "dependencies": {
-        "com.unity.mathematics": "1.3.0",
-        "com.github.jamescourtney.flatsharp.runtime": "7.2.1"
-    },
-    "keywords": [
-        "csharp",
-        "mathematics",
-        "linear algebra",
-        "serialization",
-        "flatbuffers",
-        "flatsharp",
-        "json"
-    ],
-    "author": {
-        "name": "Chris Helmich",
-        "email": "kagekirin@gmail.com",
-        "url": "https://github.com/kagekirin"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/kagekirin/unity.mathematics.serializable.git",
-        "directory": "unity.mathematics.serializable"
-    },
-    "publishConfig": {
-        "registry": "https://npm.github.com/@kagekirin"
-    }
+  "name": "com.kagekirin.unity.mathematics.serializable",
+  "version": "0.0.6",
+  "displayName": "Unity.Mathematics.Serializable",
+  "description": "JSON and FlatBuffer Serialization for Unity.Mathematics",
+  "unity": "2021.1",
+  "files": [
+    "*.meta",
+    "*.md",
+    "Unity.Mathematics.Serializable/bin/Release/netstandard2.1/*.dll",
+    "Unity.Mathematics.Serializable/bin/Release/netstandard2.1/*.pdb",
+    "Unity.Mathematics.Serializable/bin/Release/netstandard2.1/*.meta"
+  ],
+  "dependencies": {
+    "com.unity.mathematics": "1.3.0",
+    "com.github.jamescourtney.flatsharp.runtime": "7.2.1"
+  },
+  "keywords": [
+    "csharp",
+    "mathematics",
+    "linear algebra",
+    "serialization",
+    "flatbuffers",
+    "flatsharp",
+    "json"
+  ],
+  "author": {
+    "name": "Chris Helmich",
+    "email": "kagekirin@gmail.com",
+    "url": "https://github.com/kagekirin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kagekirin/unity.mathematics.serializable.git",
+    "directory": "unity.mathematics.serializable"
+  },
+  "publishConfig": {
+    "registry": "https://npm.github.com/@kagekirin"
+  }
 }
