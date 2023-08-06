@@ -16,6 +16,10 @@ jobs:
         framework: [netstandard2.1, net6.0, net7.0]
     steps:
     - uses: kagekirin/gha-utils/.github/actions/git-checkout-tags@main
+    - uses: kagekirin/gha-dotnet/.github/actions/nuget-add-registry@main
+      with:
+        name: github-nuget
+        token: ${{ secrets.GH_NUGET_TOKEN }}
     - uses: ./.github/jobactions/build
       with:
         configuration: ${{ matrix.configuration }}
