@@ -1,6 +1,6 @@
 {
     "name": "com.kagekirin.unity.mathematics.serializable",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "displayName": "Unity.Mathematics.Serializable",
     "description": "JSON and FlatBuffer Serialization for Unity.Mathematics",
     "unity": "2021.1",
